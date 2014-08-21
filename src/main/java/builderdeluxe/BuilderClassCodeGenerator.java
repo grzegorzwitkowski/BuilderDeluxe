@@ -4,6 +4,7 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
 
 import static java.lang.Character.toLowerCase;
+import static java.lang.Character.toUpperCase;
 
 public class BuilderClassCodeGenerator {
 
@@ -24,20 +25,22 @@ public class BuilderClassCodeGenerator {
     }
 
     public String staticInstanceMethod() {
-        String sourceClassCC = toLowerCase(sourceClass.getName().charAt(0)) + sourceClassName.substring(1);
-        return "public static Builder " + sourceClassCC + "() { return new Builder(); }";
+        String typeNameCC = toLowerCase(sourceClass.getName().charAt(0)) + sourceClassName.substring(1);
+        return "public static Builder " + typeNameCC + "() { return new Builder(); }";
     }
 
     public String field(PsiField sourceClassField) {
         String typeName = sourceClassField.getTypeElement().getText();
-        return "private " + typeName + " " + sourceClassField.getName() + ";";
+        String fieldName = sourceClassField.getName();
+        return "private " + typeName + " " + fieldName + ";";
     }
 
     public String fieldMethod(PsiField sourceClassField) {
         String typeName = sourceClassField.getTypeElement().getText();
-        String variableName = sourceClassField.getName();
-        return "public Builder " + variableName + "(" + typeName + " " + variableName +
-                ") { this." + variableName + " = " + variableName + "; return this; }";
+        String fieldName = sourceClassField.getName();
+        String fieldNameUC = toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+        return "public Builder with" + fieldNameUC + "(" + typeName + " " + fieldName +
+                ") { this." + fieldName + " = " + fieldName + "; return this; }";
     }
 
     public String buildMethod() {
