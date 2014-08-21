@@ -5,12 +5,15 @@
     <vendor email="gmwitkowski@gmail.com"></vendor>
 
     <description><![CDATA[
-
+BuilderDeluxe is a plugin for IntelliJ IDEA that automates creation of builder classes for POJOs. Let's say you have a class Person with
+fields age, firstName and lastName. With BuilderDeluxe you can press ALT+Insert to generate builder class and use it that way:
+<pre><code>
+Person person = person().withFirstName("John").withLastName("Doe").withAge(42).build();
+</code></pre>
     ]]></description>
 
     <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+
     ]]>
     </change-notes>
 
