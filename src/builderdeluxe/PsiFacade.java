@@ -18,40 +18,40 @@ import static com.intellij.openapi.actionSystem.CommonDataKeys.PSI_FILE;
 
 public class PsiFacade {
 
-    private Project project;
+  private Project project;
 
-    public PsiFacade(Project project) {
-        this.project = project;
-    }
+  public PsiFacade(Project project) {
+    this.project = project;
+  }
 
-    public PsiClass getPsiClassFromEvent(AnActionEvent e) {
-        PsiFile file = e.getData(PSI_FILE);
-        Editor editor = e.getData(EDITOR);
-        if (file == null || editor == null) {
-            return null;
-        }
-        int offset = editor.getCaretModel().getOffset();
-        PsiElement element = file.findElementAt(offset);
-        return PsiTreeUtil.getParentOfType(element, PsiClass.class);
+  public PsiClass getPsiClassFromEvent(AnActionEvent e) {
+    PsiFile file = e.getData(PSI_FILE);
+    Editor editor = e.getData(EDITOR);
+    if (file == null || editor == null) {
+      return null;
     }
+    int offset = editor.getCaretModel().getOffset();
+    PsiElement element = file.findElementAt(offset);
+    return PsiTreeUtil.getParentOfType(element, PsiClass.class);
+  }
 
-    public PsiClass createClassFromText(String classText) {
-        return JavaPsiFacade.getElementFactory(project).createClassFromText(classText, null).getInnerClasses()[0];
-    }
+  public PsiClass createClassFromText(String classText) {
+    return JavaPsiFacade.getElementFactory(project).createClassFromText(classText, null).getInnerClasses()[0];
+  }
 
-    public PsiMethod createMethodFromText(String methodText, PsiClass targetClass) {
-        return JavaPsiFacade.getElementFactory(project).createMethodFromText(methodText, targetClass);
-    }
+  public PsiMethod createMethodFromText(String methodText, PsiClass targetClass) {
+    return JavaPsiFacade.getElementFactory(project).createMethodFromText(methodText, targetClass);
+  }
 
-    public PsiField createFieldFromText(String fieldText, PsiClass targetClass) {
-        return JavaPsiFacade.getElementFactory(project).createFieldFromText(fieldText, targetClass);
-    }
+  public PsiField createFieldFromText(String fieldText, PsiClass targetClass) {
+    return JavaPsiFacade.getElementFactory(project).createFieldFromText(fieldText, targetClass);
+  }
 
-    public PsiElement shortenClassReferences(PsiClass psiClass) {
-        return JavaCodeStyleManager.getInstance(project).shortenClassReferences(psiClass);
-    }
+  public PsiElement shortenClassReferences(PsiClass psiClass) {
+    return JavaCodeStyleManager.getInstance(project).shortenClassReferences(psiClass);
+  }
 
-    public PsiElement reformat(PsiClass psiClass) {
-        return CodeStyleManager.getInstance(project).reformat(psiClass);
-    }
+  public PsiElement reformat(PsiClass psiClass) {
+    return CodeStyleManager.getInstance(project).reformat(psiClass);
+  }
 }
