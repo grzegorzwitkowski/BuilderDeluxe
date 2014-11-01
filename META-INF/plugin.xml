@@ -1,0 +1,48 @@
+<idea-plugin version="2">
+    <id>builder-deluxe</id>
+    <name>Builder Deluxe</name>
+    <version>1.0</version>
+    <vendor email="gmwitkowski@gmail.com"></vendor>
+
+    <description><![CDATA[
+BuilderDeluxe is a plugin for IntelliJ IDEA that automates creation of builder classes for POJOs. Let's say you have a class Person with
+fields age, firstName and lastName. With BuilderDeluxe you can press ALT+Insert to generate builder class and use it that way:
+<pre><code>
+Person person = person().withFirstName("John").withLastName("Doe").withAge(42).build();
+</code></pre>
+    ]]></description>
+
+    <change-notes><![CDATA[
+
+            ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="131"/>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="builder-deluxe-action" class="builderdeluxe.BuilderDeluxeAction" text="Builder Class">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
+
+</idea-plugin>
