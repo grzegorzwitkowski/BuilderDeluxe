@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>builder-deluxe</id>
   <name>Builder Deluxe</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor email="gmwitkowski@gmail.com"></vendor>
 
   <description><![CDATA[
@@ -10,12 +10,16 @@ fields age, firstName and lastName. With BuilderDeluxe you can press ALT+Insert 
 <pre><code>
 Person person = person().withFirstName("John").withLastName("Doe").withAge(42).build();
 </code></pre>
-    ]]></description>
+  ]]></description>
 
   <change-notes><![CDATA[
-
-          ]]>
-  </change-notes>
+<p>
+1.1
+<ul>
+<li>configurable prefix for declaring fields, e.g withFirstName - from now >with< can be configured</li>
+</ul>
+</p>
+  ]]></change-notes>
 
   <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
   <idea-version since-build="131"/>
